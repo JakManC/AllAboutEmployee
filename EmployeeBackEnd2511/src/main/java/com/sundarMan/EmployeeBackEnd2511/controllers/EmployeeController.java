@@ -28,4 +28,10 @@ public class EmployeeController {
         List<Employee> employees = employeeService.getAllEmployeesByS();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
+    @DeleteMapping("/admin/deleteEmployeeById/{id}")
+    public ResponseEntity<Employee> deleteEmployee(@PathVariable String  id)
+    {
+        Employee deletedEmployee=employeeService.deleteEmployeeByIdByS(id);
+        return new ResponseEntity<>(deletedEmployee, HttpStatus.OK);
+    }
 }

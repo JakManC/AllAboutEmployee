@@ -3,6 +3,9 @@ import useEmployeeStore from "../../employeeStore";
 import NavBar from "./NavBar";
 
 function ListOfEmployees() {
+  const deleteEmployeeFromBackEnd = useEmployeeStore(
+    (state) => state.deleteEmployeeFromBackEnd
+  );
   const listOfEmployeesFromStore = useEmployeeStore(
     (state) => state.listOfEmployeesFromStore
   );
@@ -23,6 +26,7 @@ function ListOfEmployees() {
               <th className="px-4 py-2 text-left border-b">Name</th>
               <th className="px-4 py-2 text-left border-b">Age</th>
               <th className="px-4 py-2 text-left border-b">Ambition</th>
+              <th className="px-4 py-2 text-left border-b">DELETE</th>
             </tr>
           </thead>
 
@@ -32,6 +36,14 @@ function ListOfEmployees() {
                 <td className="px-4 py-2 border-b">{employee.fullName}</td>
                 <td className="px-4 py-2 border-b">{employee.age}</td>
                 <td className="px-4 py-2 border-b">{employee.ambition}</td>
+                <td className="px-4 py-2 border-b">
+                  <button
+                    className="bg-red-700 text-white text-center p-2 m-2 rounded-full"
+                    onClick={() => deleteEmployeeFromBackEnd(employee.id)}
+                  >
+                    DLT
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

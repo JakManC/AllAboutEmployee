@@ -30,5 +30,18 @@ const useEmployeeStore = create((set) => ({
       console.log("Error Occured In Fetching List : ", error);
     }
   },
+
+  deleteEmployeeFromBackEnd: async (id) => {
+    try {
+      const res = await axios.delete(
+        `${BASE_URL}/admin/deleteEmployeeById/${id}`
+      );
+      set((state) => ({
+        employeeArray: state.employeeArray.filter((empl) => id !== empl.id),
+      }));
+    } catch (error) {
+      console.log("Error Occured : ", error);
+    }
+  },
 }));
 export default useEmployeeStore;
