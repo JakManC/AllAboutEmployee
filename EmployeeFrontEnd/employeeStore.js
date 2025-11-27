@@ -12,7 +12,7 @@ const useEmployeeStore = create((set) => ({
         empl
       );
       set((state) => ({
-        employeeArray: [...state.employeeArray, res.data],
+        employeeArray: res.data,
       }));
     } catch (error) {
       console.log("Error Occured: ", error);
